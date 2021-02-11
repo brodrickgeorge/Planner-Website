@@ -9,9 +9,13 @@ const initState = {
 const spotReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_SPOT":
-      console.log("created spot", action.spot);
+      return state;
+    case "CREATE_SPOT_ERROR":
+      console.log("create spot ettor", action.err);
+      return state;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default spotReducer;
