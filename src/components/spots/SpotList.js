@@ -1,13 +1,13 @@
 import React from "react";
 import SpotSummary from "./SpotSummary";
 
-const SpotList = () => {
+const SpotList = ({ spots }) => {
   return (
     <div className="spot-list section">
-      <SpotSummary />
-      <SpotSummary />
-      <SpotSummary />
-      <SpotSummary />
+      {spots &&
+        spots.map((spot) => {
+          return <SpotSummary spot={spot} key={spot.id} />;
+        })}
     </div>
   );
 };

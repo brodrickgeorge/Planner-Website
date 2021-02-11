@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { createSpot } from "../../store/actions/spotActions";
 
 class CreateSpot extends Component {
   state = {
@@ -14,7 +15,7 @@ class CreateSpot extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.createSpot(this.state);
   };
 
   render() {
@@ -43,11 +44,10 @@ class CreateSpot extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     CreateSpot: (spot) => dispatch(createSpot(spot)),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createSpot: (spot) => dispatch(createSpot(spot)),
+  };
+};
 
-export default CreateSpot;
-// export default connect(null, mapDispatchToProps)(CreateSpot);
+export default connect(null, mapDispatchToProps)(CreateSpot);
