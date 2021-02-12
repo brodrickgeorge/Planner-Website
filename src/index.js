@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./store/reducers/rootReducer";
+import { useSelector } from "react-redux";
+import { isLoaded } from "react-redux-firebase";
 
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -30,12 +32,23 @@ const rrfProps = {
   config: fbConfig,
   dispatch: store.dispatch,
   createFirestoreInstance,
+  userProfile: "users",
+  presence: "presence",
+  sessions: "sessions",
 };
+
+function AuthIsLoaded({ children }) {
+  const auth = useSelector((state) => state.firebase.auth);
+  if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+  return children;
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      <App />
+      <AuthIsLoaded>
+        <App />
+      </AuthIsLoaded>
     </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById("root")

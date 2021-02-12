@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { createSpot } from "../../store/actions/spotActions";
 
 class CreateSpot extends Component {
@@ -19,6 +20,8 @@ class CreateSpot extends Component {
   };
 
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -44,10 +47,16 @@ class CreateSpot extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createSpot: (spot) => dispatch(createSpot(spot)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateSpot);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSpot);
