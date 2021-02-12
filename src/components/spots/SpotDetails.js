@@ -3,9 +3,11 @@ import spot1 from "./img/spot1.jpg";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 const SpotDetails = (props) => {
-  const { spot } = props;
+  const { spot, auth } = props;
+  if (!auth.uid) return <Redirect to="/signin" />;
   if (spot) {
     return (
       <div className="container section spot-details">
@@ -39,6 +41,7 @@ const mapStateToProps = (state, ownProps) => {
   const spot = spots ? spots[id] : null;
   return {
     spot: spot,
+    auth: state.firebase.auth,
   };
 };
 
