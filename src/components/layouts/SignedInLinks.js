@@ -1,5 +1,5 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
+import React from "react";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 
@@ -16,7 +16,7 @@ const SignedInLinks = (props) => {
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating pink lighten-1">
-          BG
+          {props.profile.initials}
         </NavLink>
       </li>
     </ul>

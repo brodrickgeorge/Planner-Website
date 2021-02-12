@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import moment from "moment";
 
 const SpotDetails = (props) => {
   const { spot, auth } = props;
@@ -21,7 +22,7 @@ const SpotDetails = (props) => {
             <div>
               Posted by {spot.authorFirstName} {spot.authorLastName}
             </div>
-            <div>November 7th, 2020</div>
+            <div>{moment(spot.createdAt.toDate()).format("MMM Do, YYYY")}</div>
           </div>
         </div>
       </div>
