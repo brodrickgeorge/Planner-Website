@@ -39,6 +39,9 @@ class CreateSpot extends Component {
               onChange={this.handleChange}
             ></textarea>
           </div>
+
+          
+
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Create</button>
           </div>
