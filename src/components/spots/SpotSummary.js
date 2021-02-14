@@ -3,7 +3,7 @@ import moment from "moment";
 
 const SpotSummary = ({ spot }) => {
   return (
-    <div className="card z-depth-0 spot-summary">
+    <div className="card z-depth-4 spot-summary">
       <div className="card-content grey-text text-darken-3">
         <span className="card-title">{spot.title}</span>
         <p>

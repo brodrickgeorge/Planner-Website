@@ -8,7 +8,7 @@ const SpotList = ({ spots }) => {
       {spots &&
         spots.map((spot) => {
           return (
-            <Link to={"/spot/" + spot.id}>
+            <Link key={spot.id} to={"/spot/" + spot.id}>
               <SpotSummary spot={spot} />
             </Link>
           );
