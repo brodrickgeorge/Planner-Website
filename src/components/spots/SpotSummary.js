@@ -6,7 +6,7 @@ const SpotSummary = ({ spot }) => {
   return (
     <div className="card z-depth-4 spot-summary">
       <div class="card-image">
-        <img src={spot1} />
+        <img src={spot1} alt="spot" />
         <span className="card-title">{spot.title}</span>
       </div>
       <div className="card-content grey-text text-darken-3">
