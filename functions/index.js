@@ -23,7 +23,7 @@ exports.spotCreated = functions.firestore
   .onCreate((doc) => {
     const spot = doc.data();
     const notification = {
-      content: "Added a new Spot",
+      content: "Added a new Plan",
       user: `${spot.authorFirstName} ${spot.authorLastName}`,
       time: admin.firestore.FieldValue.serverTimestamp(),
     };

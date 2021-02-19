@@ -7,7 +7,7 @@ const SignedInLinks = (props) => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/create">New Spot</NavLink>
+        <NavLink to="/create">New Plan</NavLink>
       </li>
       <li>
         <a href="/#" onClick={props.signOut}>
